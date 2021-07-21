@@ -1,19 +1,19 @@
 #
-# Copyright (C) 2021 KFERMercer <KFER.Mercer@gmail.com>
+# Copyright (C) 2021 Paucluse
 #
 # This is free software, licensed under the GNU General Public License v3.
 #
 
 #
-# to get the latest version & md5 checksum:
-# curl -L -s -k -H "Accept:text/plain" "http://router.uu.163.com/api/plugin?type=openwrt-$(UU_ARCH)"
+# 
+# 
 #
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=uugamebooster
-PKG_VERSION:=v2.12.0
-PKG_RELEASE:=10
+PKG_NAME:=lingtigamebooster
+PKG_VERSION:=v1.4.4
+PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -21,40 +21,43 @@ define Package/$(PKG_NAME)
 	SECTION:=net
 	CATEGORY:=Network
 	DEPENDS:=@(aarch64||arm||mipsel||x86_64) +kmod-tun
-	TITLE:=NetEase UU Game Booster
-	URL:=https://uu.163.com
+	TITLE:=Lingti Game Booster
+	URL:=https://lingti.com
 endef
 
 define Package/$(PKG_NAME)/description
-NetEase's UU Game Booster Accelerates Triple-A Gameplay and Market
+Lingti's  Game Booster Accelerates Triple-A Gameplay and Market
 endef
 
 ifeq ($(ARCH),x86_64)
-	UU_ARCH:=x86_64
-	PKG_MD5SUM:=61fffa3e17f21cca78c85b0f0bbcd7ed
+	Lingti_ARCH:=x86_64
+	PKG_MD5SUM:=16620ba59dc52a52705e2be8c38d994a
 endif
 
 ifeq ($(ARCH),mipsel)
-	UU_ARCH:=mipsel
+	Lingti_ARCH:=mipsel
 	PKG_MD5SUM:=e72e9fa1761648113e9437f0e438f801
 endif
 
 ifeq ($(ARCH),arm)
-	UU_ARCH:=arm
+	Lingti_ARCH:=arm
 	PKG_MD5SUM:=3c24b9c6fceab1d2b08dfd3bd027fdf5
 endif
 
 ifeq ($(ARCH),aarch64)
-	UU_ARCH:=aarch64
+	Lingti_ARCH:=aarch64
 	PKG_MD5SUM:=01be691af0a2e856be80754d49fa821a
 endif
 
-PKG_SOURCE_URL:=http://uu.gdl.netease.com/uuplugin/openwrt-$(UU_ARCH)/$(PKG_VERSION)/uu.tar.gz?
-PKG_SOURCE:=$(PKG_NAME)-$(UU_ARCH)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=http://lingti-1302055788.file.myqcloud.com/router/1.4.4/lingti-router-x86_64.tar.gz
+http://lingti-1302055788.file.myqcloud.com/router/$(PKG_VERSION)/lingti-router-$(Lingti_ARCH).tar.gz?
+
+#http://uu.gdl.netease.com/uuplugin/openwrt-$(UU_ARCH)/$(PKG_VERSION)/uu.tar.gz?
+PKG_SOURCE:=$(PKG_NAME)-$(Lingti_ARCH)-$(PKG_VERSION).tar.gz
 
 STRIP:=true
 
-UNTAR_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)-$(UU_ARCH)-bin
+UNTAR_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)-$(Lingti_ARCH)-bin
 
 define Build/Prepare
 	mkdir -vp $(UNTAR_DIR)
