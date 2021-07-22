@@ -12,7 +12,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=lingtigamebooster
-PKG_VERSION:=v1.4.4
+PKG_VERSION:=1.4.4
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -50,8 +50,6 @@ ifeq ($(ARCH),aarch64)
 endif
 
 PKG_SOURCE_URL:=http://lingti-1302055788.file.myqcloud.com/router/$(PKG_VERSION)/lingti-router-$(Lingti_ARCH).tar.gz?
-
-#http://uu.gdl.netease.com/uuplugin/openwrt-$(UU_ARCH)/$(PKG_VERSION)/uu.tar.gz?
 PKG_SOURCE:=$(PKG_NAME)-$(Lingti_ARCH)-$(PKG_VERSION).tar.gz
 
 STRIP:=true
